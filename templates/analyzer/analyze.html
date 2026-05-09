@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Analyze Your Relationship - LoveLens{% endblock %}
+{% block content %}
+<section class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="page-heading mb-4">
+        <span class="eyebrow">Relationship analyzer</span>
+        <h1 class="fw-bold mt-2">Paste your story or chat</h1>
+        <p class="text-muted">LoveLens analyzes only the evidence you provide. Remove highly sensitive details before submitting.</p>
+      </div>
+      <form method="post" class="app-card p-4 p-lg-5">
+        {% csrf_token %}
+        <div class="row g-3">
+          <div class="col-md-6">{{ form.input_type|as_crispy_field }}</div>
+          <div class="col-md-3">{{ form.partner_name|as_crispy_field }}</div>
+          <div class="col-md-3">{{ form.relationship_duration|as_crispy_field }}</div>
+          <div class="col-12">{{ form.raw_text|as_crispy_field }}<div class="counter text-end text-muted"><span id="analysis-counter">0</span>/24000</div></div>
+        </div>
+        <div class="disclaimer my-4">This tool is for educational and informational purposes only. It is not therapy, legal advice, or a clinical diagnosis.</div>
+        <button class="btn btn-rose btn-lg" type="submit">Generate Analysis</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Delete Report - LoveLens{% endblock %}
+{% block content %}
+<section class="container py-5"><div class="app-card p-5 mx-auto" style="max-width:620px"><h1 class="h3 fw-bold">Delete this report?</h1><p class="text-muted">This cannot be undone.</p><form method="post">{% csrf_token %}<button class="btn btn-danger">Delete Report</button><a class="btn btn-outline-rose" href="{{ object.get_absolute_url }}">Cancel</a></form></div></section>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}LoveLens - AI Relationship Analyzer{% endblock %}
+{% block content %}
+<section class="hero-band">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <span class="eyebrow">AI relationship clarity</span>
+        <h1 class="display-4 fw-bolder mt-3">See Your Relationship More Clearly</h1>
+        <p class="lead text-muted mt-3">Paste your story or chat and get an AI-powered relationship analysis.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a class="btn btn-rose btn-lg" href="{% url 'analyze' %}">Analyze My Relationship</a>
+          <a class="btn btn-outline-rose btn-lg" href="#preview">View Example</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="preview-panel">
+          <div class="score-orbit">82</div>
+          <h2 class="h5 fw-bold mt-3">Relationship Health</h2>
+          <div class="progress soft-progress"><div class="progress-bar" style="width:82%"></div></div>
+          <div class="mini-grid mt-4">
+            <span>Trust <strong>74</strong></span>
+            <span>Safety <strong>88</strong></span>
+            <span>Toxicity <strong>18</strong></span>
+            <span>Communication <strong>79</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5">
+  <div class="row g-4">
+    <div class="col-md-4"><div class="feature-card"><h2 class="h5">Evidence-Based Signals</h2><p>Flags possible gaslighting, boundary problems, love bombing, controlling behavior, and communication patterns from the text you provide.</p></div></div>
+    <div class="col-md-4"><div class="feature-card"><h2 class="h5">Balanced Reflection</h2><p>Highlights green flags and strengths alongside risks, with cautious language and no clinical diagnosis.</p></div></div>
+    <div class="col-md-4"><div class="feature-card"><h2 class="h5">Private Report History</h2><p>Registered users get unlimited analyses and saved report history without subscriptions or payments.</p></div></div>
+  </div>
+</section>
+
+<section id="preview" class="soft-section py-5">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-5"><h2 class="fw-bold">A report you can actually use</h2><p class="text-muted">LoveLens turns messy emotional context into scores, flags, next steps, boundary scripts, and questions to ask your partner.</p></div>
+      <div class="col-lg-7">
+        <div class="report-preview">
+          <div class="verdict-pill">Overall verdict</div>
+          <p class="mb-3">There are positive repair attempts, but repeated defensiveness and privacy pressure may need clear boundaries.</p>
+          <div class="row g-3">
+            <div class="col-sm-4"><div class="flag red">Red flags<br><strong>2</strong></div></div>
+            <div class="col-sm-4"><div class="flag yellow">Yellow flags<br><strong>4</strong></div></div>
+            <div class="col-sm-4"><div class="flag green">Green flags<br><strong>3</strong></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5">
+  <h2 class="fw-bold mb-4">FAQ</h2>
+  <div class="accordion" id="faq">
+    <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#f1">Is LoveLens therapy?</button></h3><div id="f1" class="accordion-collapse collapse show" data-bs-parent="#faq"><div class="accordion-body">No. It is educational and informational only, not therapy, legal advice, or a diagnosis.</div></div></div>
+    <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f2">Can anonymous users analyze?</button></h3><div id="f2" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Yes, anonymous users can analyze once. Free accounts have unlimited analyses and saved reports.</div></div></div>
+  </div>
+</section>
+{% endblock %}

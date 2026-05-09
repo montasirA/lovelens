@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{{ report.title }} - LoveLens{% endblock %}
+{% block content %}
+<section class="container py-5">
+  {% if report.urgent_warning %}<div class="alert alert-danger rounded-4"><strong>Safety warning:</strong> {{ report.urgent_warning }}</div>{% endif %}
+  <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+    <div><span class="eyebrow">Analysis report</span><h1 class="fw-bold mt-2">{{ report.title }}</h1><p class="text-muted">{{ report.created_at|date:"M j, Y" }}</p></div>
+    <div class="d-flex gap-2">{% if user.is_authenticated %}<a class="btn btn-outline-rose" href="{% url 'report_history' %}">History</a>{% endif %}</div>
+  </div>
+  <div class="verdict-banner mb-4">{{ report.overall_verdict }}</div>
+  <div class="score-grid mb-4">
+    {% include "reports/score.html" with label="Health" value=report.relationship_health_score %}
+    {% include "reports/score.html" with label="Toxicity" value=report.toxicity_score %}
+    {% include "reports/score.html" with label="Safety" value=report.emotional_safety_score %}
+    {% include "reports/score.html" with label="Compatibility" value=report.compatibility_score %}
+    {% include "reports/score.html" with label="Narcissism" value=report.narcissism_score %}
+    {% include "reports/score.html" with label="Manipulation" value=report.manipulation_score %}
+    {% include "reports/score.html" with label="Trust" value=report.trust_score %}
+    {% include "reports/score.html" with label="Communication" value=report.communication_score %}
+  </div>
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="app-card p-4 mb-4"><h2 class="h4">Plain-English Summary</h2><p>{{ report.summary }}</p><p class="mb-0"><strong>Attachment indicators:</strong> {{ report.attachment_style }}</p></div>
+      {% include "reports/list_section.html" with title="Red Flags" items=report.red_flags tone="danger" %}
+      {% include "reports/list_section.html" with title="Yellow Flags" items=report.yellow_flags tone="warning" %}
+      {% include "reports/list_section.html" with title="Green Flags" items=report.green_flags tone="success" %}
+      {% include "reports/list_section.html" with title="Narcissistic Traits" items=report.narcissistic_traits tone="danger" %}
+      {% include "reports/list_section.html" with title="Gaslighting Patterns" items=report.gaslighting_patterns tone="danger" %}
+    </div>
+    <div class="col-lg-5">
+      {% include "reports/list_section.html" with title="Strengths" items=report.strengths tone="success" %}
+      {% include "reports/list_section.html" with title="Risks" items=report.risks tone="warning" %}
+      {% include "reports/list_section.html" with title="Personalized Advice" items=report.advice tone="rose" %}
+      {% include "reports/list_section.html" with title="Boundary Suggestions" items=report.boundary_suggestions tone="rose" %}
+      {% include "reports/list_section.html" with title="Questions to Ask" items=report.recommended_questions tone="rose" %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,8 @@
+<section class="app-card p-4 mb-4 list-section {{ tone }}">
+  <h2 class="h5 fw-bold">{{ title }}</h2>
+  {% if items %}
+    <ul class="clean-list mb-0">{% for item in items %}<li>{{ item }}</li>{% endfor %}</ul>
+  {% else %}
+    <p class="text-muted mb-0">No strong evidence found in the provided text.</p>
+  {% endif %}
+</section>
