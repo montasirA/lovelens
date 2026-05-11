@@ -71,11 +71,6 @@ Users can paste a relationship story, chat conversation, or situation descriptio
 ### 🔌 API Support
 - 🌐 REST API endpoint at `/api/analyze/`
 
-### 🔍 SEO & Deployment
-- 🗺️ Sitemap
-- 🤖 robots.txt
-- ☁️ Render deployment ready
-
 ---
 
 ## 🚀 Local Setup
